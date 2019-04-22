@@ -39,8 +39,8 @@ namespace stringutil
     std::string ConvertWithZeroPadding(const T& value,
                                        const unsigned int length)
     {
-        assert(length >= str.length());
         std::string str = std::to_string(value);
+        assert(length >= str.length());
         str.insert(0, length - str.length(), '0');
         return str;
     }
