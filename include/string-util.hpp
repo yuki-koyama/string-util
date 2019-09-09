@@ -26,6 +26,7 @@
 #define string_util_hpp
 
 #include <cassert>
+#include <ctime>
 #include <string>
 
 namespace stringutil
@@ -43,6 +44,16 @@ namespace stringutil
         assert(length >= str.length());
         str.insert(0, length - str.length(), '0');
         return str;
+    }
+
+    /// \brief Create a string representing the current time.
+    /// \details The reulst looks like: "20190909222032".
+    inline std::string GetCurrentTimeAsString()
+    {
+        char buffer[100];
+        const std::time_t t = std::time(nullptr);
+        std::strftime(buffer, sizeof(buffer), "%Y%m%d%H%M%S", std::localtime(&t));
+        return std::string(buffer);
     }
 }
 
